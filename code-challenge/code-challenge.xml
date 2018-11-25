@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>code-challenge</name>
+    </assembly>
+    <members>
+        <member name="M:challenge.Controllers.EmployeeController.GetAllEmployees">
+            <summary>
+            List all employee records
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:challenge.Controllers.EmployeeController.CreateEmployee(challenge.Models.Employee)">
+            <summary>
+            Create new employee record
+            </summary>
+            <param name="employee">The complete employee record to create</param>
+            <returns></returns>
+        </member>
+        <member name="M:challenge.Controllers.EmployeeController.GetEmployeeById(System.String)">
+            <summary>
+            Get a single employee record
+            </summary>
+            <param name="id">The id of the employee being listed</param>
+            <returns></returns>
+        </member>
+        <member name="M:challenge.Controllers.EmployeeController.ReplaceEmployee(System.String,challenge.Models.Employee)">
+            <summary>
+            Update a single employee record
+            </summary>
+            <param name="id">The id of the employee to update</param>
+            <param name="newEmployee">The payload containing the complete updated employee information</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

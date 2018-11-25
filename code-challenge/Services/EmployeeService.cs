@@ -40,11 +40,6 @@ namespace challenge.Services
             return null;
         }
 
-        public List<Employee> GetEmployees()
-        {
-            return _employeeRepository.GetAll();
-        }
-
         public Employee Replace(Employee originalEmployee, Employee newEmployee)
         {
             if(originalEmployee != null)
@@ -63,6 +58,54 @@ namespace challenge.Services
             }
 
             return newEmployee;
+        }
+
+        // KFD
+        public List<Employee> GetAllEmployees()
+        {
+            return _employeeRepository.GetAll();
+        }
+
+        // KFD
+        public ReportingStructure GetReportingStructureById(string id)
+        {
+            var employee = GetById(id);
+            if (employee != null)
+            {
+                return new ReportingStructure
+                {
+                    Employee = employee,
+                    NumberOfReports = GetDirectReportCount(employee)
+                };
+            }
+
+            return null;
+        }
+
+        // KFD
+        // Recursive method to traverse all DirectReports and tally the total number
+        int GetDirectReportCount(Employee employee)
+        {
+            var reportCount = 0;
+
+            if (employee.DirectReports != null)
+            {
+                _logger.LogDebug($"'{employee.FirstName} {employee.LastName}' has '{employee.DirectReports.Count}' direct reports");
+                foreach (Employee directReport in employee.DirectReports)
+                {
+                    // Add one for this direct report
+                    reportCount++;
+
+                    // Recursively add the direct report's direct reports.
+                    reportCount += GetDirectReportCount(directReport);
+                }
+            }
+            else
+            {
+                _logger.LogDebug($"'{employee.FirstName} {employee.LastName}' has NO direct reports");
+            }
+
+            return reportCount;
         }
     }
 }

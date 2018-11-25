@@ -21,12 +21,16 @@ namespace challenge.Controllers
             _employeeService = employeeService;
         }
 
+        /// <summary>
+        /// List all employee records
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
-        public IActionResult GetEmployees()
+        public IActionResult GetAllEmployees()
         {
             _logger.LogDebug($"Received employee get request for all employees");
 
-            var employees = _employeeService.GetEmployees();
+            var employees = _employeeService.GetAllEmployees();
 
             if (employees == null)
                 return NotFound();
@@ -34,6 +38,11 @@ namespace challenge.Controllers
             return Ok(employees);
         }
 
+        /// <summary>
+        /// Create new employee record
+        /// </summary>
+        /// <param name="employee">The complete employee record to create</param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult CreateEmployee([FromBody] Employee employee)
         {
@@ -44,6 +53,11 @@ namespace challenge.Controllers
             return CreatedAtRoute("getEmployeeById", new { id = employee.EmployeeId }, employee);
         }
 
+        /// <summary>
+        /// Get a single employee record
+        /// </summary>
+        /// <param name="id">The id of the employee being listed</param>
+        /// <returns></returns>
         [HttpGet("{id}", Name = "getEmployeeById")]
         public IActionResult GetEmployeeById(String id)
         {
@@ -57,6 +71,12 @@ namespace challenge.Controllers
             return Ok(employee);
         }
 
+        /// <summary>
+        /// Update a single employee record
+        /// </summary>
+        /// <param name="id">The id of the employee to update</param>
+        /// <param name="newEmployee">The payload containing the complete updated employee information</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public IActionResult ReplaceEmployee(String id, [FromBody]Employee newEmployee)
         {

@@ -12,6 +12,8 @@ using challenge.Data;
 using Microsoft.EntityFrameworkCore;
 using challenge.Repositories;
 using challenge.Services;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace code_challenge
 {
@@ -35,6 +37,17 @@ namespace code_challenge
             services.AddTransient<EmployeeDataSeeder>();
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddMvc();
+
+            // KFD
+            // Configure Swagger
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "Code Challenge", Version = "v1" });
+
+                // Configure Swagger to use the xml documentation file
+                var xmlFile = System.IO.Path.ChangeExtension(typeof(Startup).Assembly.Location, ".xml");
+                c.IncludeXmlComments(xmlFile);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +60,13 @@ namespace code_challenge
             }
 
             app.UseMvc();
+
+            // KFD
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Code Challenge API Documentation");
+            });
         }
     }
 }

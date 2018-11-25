@@ -27,11 +27,19 @@ namespace challenge.Repositories
             return employee;
         }
 
+        // KFD
+        // TODO As originially written, this seems to drop DirectReports in the return response. Not sure why? Is this an unwritten task in the challenge?
         public Employee GetById(string id)
         {
-            return _employeeContext.Employees.SingleOrDefault(e => e.EmployeeId == id);
+            //var employee = _employeeContext.Employees.SingleOrDefault(e => e.EmployeeId == id);
+            //return employee;
+            var employee = _employeeContext.Employees.AsEnumerable().Where(e => e.EmployeeId == id);
+            return employee.SingleOrDefault(); 
         }
 
+        // KFD 
+        // Get all Employee records at once
+        // TODO This works fine for this small sample, but would need to be updated to paginate results for large data sets
         public List<Employee> GetAll()
         {
             return _employeeContext.Employees.ToList();

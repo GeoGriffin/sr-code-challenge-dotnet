@@ -8,7 +8,7 @@ namespace challenge.Repositories
     public interface IEmployeeRepository
     {
         Employee GetById(String id);
-        List<Employee> GetAll();
+        List<Employee> GetAll(); // KFD 
         Employee Add(Employee employee);
         Employee Remove(Employee employee);
         Task SaveAsync();
