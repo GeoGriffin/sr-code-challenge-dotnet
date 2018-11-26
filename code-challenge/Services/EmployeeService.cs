@@ -61,12 +61,14 @@ namespace challenge.Services
         }
 
         // KFD
+        // Convenience method to list all current employees
         public List<Employee> GetAllEmployees()
         {
             return _employeeRepository.GetAll();
         }
 
         // KFD
+        // (Task 1) Build the ReportingStructure response and populate it
         public ReportingStructure GetReportingStructureById(string id)
         {
             var employee = GetById(id);
@@ -83,7 +85,7 @@ namespace challenge.Services
         }
 
         // KFD
-        // Recursive method to traverse all DirectReports and tally the total number
+        // (Task 1) Recursive method to traverse all DirectReports and tally the total number
         int GetDirectReportCount(Employee employee)
         {
             var reportCount = 0;

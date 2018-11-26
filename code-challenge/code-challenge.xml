@@ -4,6 +4,34 @@
         <name>code-challenge</name>
     </assembly>
     <members>
+        <member name="M:code_challenge.Controllers.CompensationController.GetAllCompensations">
+            <summary>
+            List all compensation records
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:code_challenge.Controllers.CompensationController.CreateCompensation(challenge.Models.Compensation)">
+            <summary>
+            Create new compensation record
+            </summary>
+            <param name="compensation">The complete compensation record to create</param>
+            <returns></returns>
+        </member>
+        <member name="M:code_challenge.Controllers.CompensationController.GetCompensationById(System.String)">
+            <summary>
+            Get a single compensation record
+            </summary>
+            <param name="id">The id of the compensation being listed</param>
+            <returns></returns>
+        </member>
+        <member name="M:code_challenge.Controllers.CompensationController.ReplaceCompensation(System.String,challenge.Models.Compensation)">
+            <summary>
+            Update a single compensation record
+            </summary>
+            <param name="id">The id of the compensation to update</param>
+            <param name="newCompensation">The payload containing the complete updated compensation information</param>
+            <returns></returns>
+        </member>
         <member name="M:challenge.Controllers.EmployeeController.GetAllEmployees">
             <summary>
             List all employee records

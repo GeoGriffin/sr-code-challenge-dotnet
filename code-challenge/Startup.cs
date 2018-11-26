@@ -33,9 +33,15 @@ namespace code_challenge
             {
                 options.UseInMemoryDatabase("EmployeeDB");
             });
+            services.AddDbContext<CompensationContext>(options =>
+            {
+                options.UseInMemoryDatabase("CompensationDB");
+            });
             services.AddScoped<IEmployeeRepository,EmployeeRespository>();
+            services.AddScoped<ICompensationRepository, CompensationRespository>();
             services.AddTransient<EmployeeDataSeeder>();
             services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<ICompensationService, CompensationService>();
             services.AddMvc();
 
             // KFD
@@ -58,6 +64,9 @@ namespace code_challenge
                 app.UseDeveloperExceptionPage();
                 seeder.Seed().Wait();
             }
+
+            // KFD
+            //app.UseStatusCodePagesWithRedirects("/swagger");
 
             app.UseMvc();
 
