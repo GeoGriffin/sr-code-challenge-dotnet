@@ -15,6 +15,7 @@
   <ItemGroup>
     <Content Include="resources\CompensationSeedData.json">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\EmployeeSeedData.json">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
