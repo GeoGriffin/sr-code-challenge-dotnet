@@ -1,4 +1,21 @@
 # Mindex Coding Challenge
+
+---
+
+## Developer Notes
+
+Prepared by *Kurt Devlin* for *Mindex Technologies*
+* https://www.linkedin.com/in/kurtdevlin/
+* kurt.devlin@gmail.com
+
+### Notes
+* Updates to existing classes have been annotated with `// KFD` comments
+* Potential areas for improvement or other paces of note annotated with `// TODO`
+* Newly created classes follow the task domains, `ReportingStructer*.cs` and `Compensation*.cs`
+* API is documented with Swagger and it available at localhost:8080/swagger
+
+---
+
 ## What's Provided
 A simple [.NetCore 2.1](https://www.microsoft.com/net/download/dotnet-core/sdk-2.1.300) web application has been created and bootstrapped 
 with data. The application contains information about all employees at a company. On application start-up, an in-memory 

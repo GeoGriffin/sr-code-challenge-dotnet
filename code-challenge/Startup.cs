@@ -49,7 +49,12 @@ namespace code_challenge
             // Configure Swagger
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "Code Challenge", Version = "v1" });
+                c.SwaggerDoc("v1", new Info
+                {
+                    Title = "Mindex Code Challenge",
+                    Version = "v1",
+                    Description = "API challenge prepared by [Kurt Devlin](https://www.linkedin.com/in/kurtdevlin/)"
+                });
 
                 // Configure Swagger to use the xml documentation file
                 var xmlFile = System.IO.Path.ChangeExtension(typeof(Startup).Assembly.Location, ".xml");
