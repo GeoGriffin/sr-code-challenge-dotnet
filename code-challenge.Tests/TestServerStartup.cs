@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using challenge.Repositories;
 using challenge.Services;
 using challenge.Controllers;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace code_challenge.Tests.Integration
 {
@@ -34,22 +36,25 @@ namespace code_challenge.Tests.Integration
             services.AddScoped<IEmployeeRepository, EmployeeRespository>();
             services.AddScoped<ICompensationRepository, CompensationRespository>();
             services.AddTransient<EmployeeDataSeeder>();
+            services.AddTransient<CompensationDataSeeder>();
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<ICompensationService, CompensationService>();
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, EmployeeDataSeeder seeder)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, EmployeeDataSeeder employeeSeeder, CompensationDataSeeder compensationSeeder)
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
-                seeder.Seed().Wait();
-            }
-            
-            app.UseMvc();
+                var seed1 = employeeSeeder.Seed();
+                var seed2 = compensationSeeder.Seed();
 
+                app.UseDeveloperExceptionPage();
+                Task.WaitAll(seed1, seed2);
+            }
+
+            app.UseMvc();
         }
     }
 }

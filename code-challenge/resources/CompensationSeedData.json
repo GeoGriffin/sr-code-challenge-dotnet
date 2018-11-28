@@ -1,0 +1,27 @@
+﻿[
+  {
+    "employeeId": "16a596ae-edd3-4847-99fe-c4518e82c86f",
+    "effectiveDate": "1957-03-03T00:00:00",
+    "salary": "999999.99"
+  },
+  {
+    "employeeId": "b7839309-3348-463b-a7e3-5de1c168beb3",
+    "effectiveDate": "1957-07-07T00:00:00",
+    "salary": "888888.88"
+  },
+  {
+    "employeeId": "c0c2293d-16bd-4603-8e08-638a9d18b22c",
+    "effectiveDate": "1958-02-02T00:00:00",
+    "salary": "777777.77"
+  },
+  {
+    "employeeId": "62c1084e-6e34-4630-93fd-9153afb65309",
+    "effectiveDate": "1960-08-08T00:00:00",
+    "salary": "666666.66"
+  },
+  {
+    "employeeId": "03aa1462-ffa9-4978-901b-7c001562cf6f",
+    "effectiveDate": "1962-08-15T00:00:00",
+    "salary": "555555.55"
+  }
+]
